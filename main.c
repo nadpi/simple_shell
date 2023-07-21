@@ -3,12 +3,13 @@
  * main - main
  * Return: always 0 (Success)
  */
-int main(void)
+
+int main(int argc, char **argv)
 {
 	char *input = NULL;
 	size_t bufsiz = 0;
 	ssize_t charsRead = 0;
-	char *args[256];
+	char *arg[256];
 	int i = 0;
 	char *token;
 	pid_t pid;
@@ -17,22 +18,24 @@ int main(void)
 	while (true)
 	{
 		pid = fork();
-		token = strtok(input, " \n");
-		while (token != NULL) {
-			args[i++] = token;
-			token = strtok(NULL, " \n");
-		}
-		args[i] = NULL;
 
 		if (pid == -1)
 		{
-		perror("fork");
+		perror("./shell");
 		return (1);
 		}
 		else if (pid == 0)
 		{
-		execve(args[0], args, NULL);
-		perror("execve");
+		token = strtok(input, " \n");
+		while (token != NULL)
+		{
+			arg[i++] = token;
+			token = strtok(NULL, " \n");
+		}
+		arg[i] = NULL;
+			execve(arg[0], arg, environ);
+		perror("./shell");
+		return (1);
 		}
 		else
 		{

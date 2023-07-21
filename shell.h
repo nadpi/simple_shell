@@ -8,4 +8,5 @@
 #include <string.h>
 #include <stdlib.h>
 #include <stdbool.h>
+extern char **environ;
 #endif
