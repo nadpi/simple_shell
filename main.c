@@ -17,6 +17,12 @@ int main(int argc, char **argv)
 
 	while (true)
 	{
+		printf("$ ");
+		charsRead = getline(&input, &bufsiz, stdin);
+
+		if (charsRead == -1)
+			break;
+
 		pid = fork();
 
 		if (pid == -1)
@@ -33,16 +39,15 @@ int main(int argc, char **argv)
 			token = strtok(NULL, " \n");
 		}
 		arg[i] = NULL;
-			execve(arg[0], arg, environ);
+		execve(arg[0], arg, environ);
 		perror("./shell");
 		return (1);
 		}
 		else
 		{
 		waitpid(pid, &status, 0);
-		printf("$ ");
-		charsRead = getline(&input, &bufsiz, stdin);
 		}
 	}
+	free(input);
 	return (0);
 }
