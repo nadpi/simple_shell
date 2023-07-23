@@ -9,4 +9,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 extern char **environ;
+int cmp(char *s1, char *s2);
+void findandexec(char *, char *);
+int _strlen(char*);
 #endif
