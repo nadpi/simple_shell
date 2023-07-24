@@ -10,7 +10,7 @@
 #include <stdbool.h>
 extern char **environ;
 int cmp(char *s1, char *s2);
-void findandexec(char *, char *, char **);
+int findandexec(char *, char *, char **);
 int _strlen(char*);
 void tokenize(char*, char**);
 #endif

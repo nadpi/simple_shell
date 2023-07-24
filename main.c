@@ -11,7 +11,7 @@ int main(int argc, char **argv)
 	size_t bufsiz = 0;
 	ssize_t charsRead = 0;
 	char *arg[256];
-	int i = 0;
+	int flag = 0;
 	char *token;
 	pid_t pid;
 	int status;
@@ -21,6 +21,9 @@ int main(int argc, char **argv)
 	{
 		printf("M&N$ ");
 		charsRead = getline(&input, &bufsiz, stdin);
+		tokenize(input,arg);
+		/*flag = findandexec(arg[0],def_path,arg);
+*/
 
 		if (charsRead == -1)
 			break;
@@ -33,9 +36,7 @@ int main(int argc, char **argv)
 		return (1);
 		}
 		else if (pid == 0)
-		{	
-			tokenize(input, arg);
-
+		{
 			if (arg[0] == NULL)
 			continue;
 
@@ -45,9 +46,7 @@ int main(int argc, char **argv)
 			perror("./shell");
 			}
 			else if (cmp("/", arg[0]) == 0)
-			{
-				findandexec(arg[0],def_path, arg);
-			}
+				flag = findandexec(arg[0],def_path, arg);
 		}
 		else
 			waitpid(pid, &status, 0);
