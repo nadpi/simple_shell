@@ -1,10 +1,17 @@
 #include "shell.h"
 /**
  * sep - Handles the commands separator
- *@c:
- * Return: Always 0 (Success)
+ *@input: input
+ *@arg: arg
+ *@flag: flag representing the separators
 */
-void sep()
+void sep(char *input, char **arg, int flag)
 {
-return (0);
+	char *commands[256];
+
+	if (flag == 1)
+	{
+		strtok(input, " ;");
+	}
+
 }

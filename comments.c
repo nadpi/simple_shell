@@ -1,0 +1,21 @@
+#include "shell.h"
+/**
+ * comments - comments
+ *@input: input
+ *Return: command string
+*/
+char *comments(char *input)
+{
+	int i = 0;
+	char *comString;
+
+	 comString = malloc(strlen(input) + 1);
+
+	while(input[i] != '#')
+	{
+		comString[i] = input[i];
+		i++;
+	}
+	comString[i] = '\0';
+	return (comString);
+}

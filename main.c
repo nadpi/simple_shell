@@ -6,7 +6,7 @@
 
 int main(int argc, char **argv)
 {
-	char *input = NULL, *arg[256], *token, *def_path = "/usr/bin/";
+	char *input = NULL, *arg[256], *token, *def_path = "/usr/bin/", *newString;
 	size_t bufsiz = 0;
 	ssize_t charsRead = 0;
 	int status, flag = 0, i = 0;
@@ -16,7 +16,14 @@ int main(int argc, char **argv)
 	{
 		printf("M&N$ ");
 		charsRead = getline(&input, &bufsiz, stdin);
-		tokenize(input, arg);
+
+		 if (cmp("#", input) > 0)
+		 {
+            		newString = comments(input);
+            		strcpy(input, newString);
+            		free(newString); // free memory allocated by comments()
+		 }	
+		tokenize(input, arg, " \n");
 
 		if (charsRead == -1 || strcmp(arg[0], "exit") == 0)
 			break;
