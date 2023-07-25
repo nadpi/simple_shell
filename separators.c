@@ -7,7 +7,7 @@
 bool separator(char *input)
 {
 	char *token, *sep_delimiter = ";", *command;
-	int i, flag, token_count = 0;
+	int i, token_count = 0;
 	char *commands[256], *arg[256];
 
 	token = strtok(input, sep_delimiter);
@@ -29,8 +29,7 @@ bool separator(char *input)
 			env();
 			continue;
 		}
-		flag = findandexec(arg[0], "/usr/bin/", arg, 0);
-		if (flag == 0)
+		if ((findandexec(arg[0], "/usr/bin/", arg, 0)) == 0)
 			continue;
 		else
 		{
