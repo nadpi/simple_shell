@@ -12,7 +12,7 @@ int main(void)
 
 	while (true)
 	{
-		printf("M&N$ ");
+		printf("$ ");
 		charsRead = getline(&input, &bufsiz, stdin);
 		if (cmp("#", input) > 0)
 		{
