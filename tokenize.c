@@ -9,23 +9,8 @@
 void tokenize(char *input, char **arg, char *del)
 {
 	char *token;
-	int i = 0, flag = 0;
-/*
-	if (cmp(";", input) == 0)
-	{
-		flag = 1;
-		sep(input, arg, flag);
-	}
-	else if (cmp("&&", input) == 0)
-	{
-		flag = 2;
-		sep(input, arg, flag);
-	}
-	else if (cmp("||", input) == 0)
-	{
-		flag = 3;
-		sep(input, arg, flag);
-	}*/
+	int i = 0;
+
 	token = strtok(input, del);
 	while (token != NULL)
 	{
@@ -38,5 +23,4 @@ void tokenize(char *input, char **arg, char *del)
 		arg[0] = "";
 		arg[1] = NULL;
 	}
-/*	return (flag);*/
 }
