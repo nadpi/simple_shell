@@ -6,7 +6,7 @@
  * @del: delimiter
  * Return: arg
  */
-int tokenize(char *input, char **arg, char *del)
+void tokenize(char *input, char **arg, char *del)
 {
 	char *token;
 	int i = 0, flag = 0;

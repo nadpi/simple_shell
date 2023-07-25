@@ -16,4 +16,5 @@ int _strlen(char *);
 void tokenize(char *, char **, char *);
 void env(void);
 char *comments(char *);
+bool separator(char *);
 #endif
