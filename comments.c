@@ -9,7 +9,7 @@ char *comments(char *input)
 	int i = 0;
 	char *comString;
 
-	 comString = malloc(strlen(input) + 1);
+	 comString = malloc(_strlen(input) + 1);
 
 	while (input[i] != '#')
 	{

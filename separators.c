@@ -20,11 +20,11 @@ bool separator(char *input)
 	{
 		command = commands[i];
 		tokenize(command, arg, " \n");
-		if (arg[0] == NULL || strcmp(arg[0], "") == 0)
+		if (arg[0] == NULL || _strcmp(arg[0], "") == 0)
 			continue;
-		if (strcmp(arg[0], "exit") == 0)
+		if (_strcmp(arg[0], "exit") == 0)
 			return (true);
-		if (strcmp(arg[0], "env") == 0)
+		if (_strcmp(arg[0], "env") == 0)
 		{
 			env();
 			continue;

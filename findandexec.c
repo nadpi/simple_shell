@@ -24,14 +24,14 @@ int findandexec(char *command, char *path, char **arg, int option)
 	}
 	else if (cmp("/", arg[0]) == 0)
 	{
-		cleanpath = malloc(strlen(path) + strlen(command) + 2);
+		cleanpath = malloc(_strlen(path) + _strlen(command) + 2);
 	if (cleanpath == NULL)
 	{
 		perror("malloc");
 		exit(1);
 	}
-	strcpy(cleanpath, path);
-	strcat(cleanpath, command);
+	_strcpy(cleanpath, path);
+	_strcat(cleanpath, command);
 	if (access(cleanpath, X_OK) == 0)
 	{
 		if (option == 1)
