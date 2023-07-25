@@ -16,6 +16,6 @@ char *comments(char *input)
 		comString[i] = input[i];
 		i++;
 	}
-	comString[i] = '\0';
+	comString[i++] = '\0';
 	return (comString);
 }
