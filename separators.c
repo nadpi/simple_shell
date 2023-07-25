@@ -17,7 +17,6 @@ bool separator(char *input)
     {
         commands[token_count++] = token;
         token = strtok(NULL, sep_delimiter);
-	printf("command\n");
     }
 
     for (int i = 0; i < token_count; i++)
