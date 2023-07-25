@@ -2,14 +2,15 @@
 /**
  * tokenize - tokenize
  * @input: input
+ * @arg: array of arguments
  * Return: arg
  */
-void tokenize (char* input, char** arg)
+void tokenize(char *input, char **arg)
 {
-	char* token;
+	char *token;
 	int i = 0;
 
-	token = strtok(input," \n");
+	token = strtok(input, " \n");
 	while (token != NULL)
 	{
 		arg[i++] = token;

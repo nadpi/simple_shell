@@ -6,50 +6,45 @@
 
 int main(int argc, char **argv)
 {
-	int z = 0;
-	char *input = NULL;
+	char *input = NULL, *arg[256], *token, *def_path = "/usr/bin/";
 	size_t bufsiz = 0;
 	ssize_t charsRead = 0;
-	char *arg[256];
-	int flag = 0;
-	char *token;
+	int status, flag = 0;
 	pid_t pid;
-	int status;
-	char *def_path = "/usr/bin/"; 
 
 	while (true)
 	{
 		printf("M&N$ ");
 		charsRead = getline(&input, &bufsiz, stdin);
-		tokenize(input,arg);
-		/*flag = findandexec(arg[0],def_path,arg);
-*/
-
-		if (charsRead == -1)
+		tokenize(input, arg);
+		if (charsRead == -1 || strcmp(arg[0], "exit") == 0)
 			break;
-
+		if (strcmp(arg[0], "env"))
+                {
+                        env();
+                        continue;
+                }
+		flag = findandexec(arg[0], def_path, arg, 0);
+		if (flag == 0)
+			continue;
+		else if (flag == 2)
+			continue;
+		else
+		{
 		pid = fork();
 
 		if (pid == -1)
 		{
-			perror("fork");
+		perror("fork");
 		return (1);
 		}
 		else if (pid == 0)
 		{
-			if (arg[0] == NULL)
-			continue;
-
-			if (cmp("/",arg[0]) > 0)
-			{
-			execve(arg[0], arg, environ);
-			perror("./shell");
-			}
-			else if (cmp("/", arg[0]) == 0)
-				flag = findandexec(arg[0],def_path, arg);
+			flag = findandexec(arg[0], def_path, arg, 1);
 		}
 		else
 			waitpid(pid, &status, 0);
+		}
 	}
 	free(input);
 	return (0);

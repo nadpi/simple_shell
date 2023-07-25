@@ -1,39 +1,52 @@
 #include "shell.h"
 /**
- * findandexec - find and execute 
+ * findandexec - find and execute
  * @path: path
- * @command: command 
+ * @command: command
  * @arg: arg
+ * @option: option
  * Return: always 0
  */
-int findandexec (char *command, char *path, char **arg)
+int findandexec(char *command, char *path, char **arg, int option)
 {
-	char *cleanpath = malloc(strlen(path) + strlen(command) + 1);
-	int flag = 0;
+	char *cleanpath;
+	int flag = 1;
 
+	if (arg[0] == NULL)
+	{
+		flag = 2;
+		return (flag);
+	}
+	if (cmp("/", arg[0]) > 0 && option == 1)
+	{
+		execve(arg[0], arg, NULL);
+		perror("./shell");
+	}
+	else if (cmp("/", arg[0]) == 0)
+	{
+		cleanpath = malloc(strlen(path) + strlen(command) + 2);
 	if (cleanpath == NULL)
 	{
 		perror("malloc");
-		return;
+		exit(1);
 	}
-
 	strcpy(cleanpath, path);
 	strcat(cleanpath, command);
-
 	if (access(cleanpath, X_OK) == 0)
 	{
-		execve(cleanpath, arg, environ);
-		flag = 1;
-		perror("execve");
-		free(cleanpath);
+		if (option == 1)
+		{
+		execve(cleanpath, arg, NULL);
 		exit(1);
+		}
+		flag = 1;
 	}
 	else
 	{
 		fprintf(stderr, "%s: command not found\n", command);
 		flag = 0;
 	}
-
-	free(cleanpath);
+		free(cleanpath);
+	}
 	return (flag);
 }
