@@ -19,7 +19,7 @@ int main(int argc, char **argv)
 		tokenize(input, arg);
 		if (charsRead == -1 || strcmp(arg[0], "exit") == 0)
 			break;
-		if (strcmp(arg[0], "env"))
+		if (strcmp(arg[0], "env") == 0)
                 {
                         env();
                         continue;

@@ -9,7 +9,7 @@ void env(void)
 
 	while (environment[i] != NULL)
 	{
-		printf("%s", environment[i]);
+		printf("%s\n", environment[i]);
 		i++;
 	}
 }
