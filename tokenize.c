@@ -17,4 +17,9 @@ void tokenize(char *input, char **arg)
 		token = strtok(NULL, " \n");
 	}
 	arg[i] = NULL;
+	if (i == 0)
+	{
+		arg[0] = "";
+		arg[1] = NULL;
+	}
 }

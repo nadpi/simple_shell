@@ -9,7 +9,7 @@ int main(int argc, char **argv)
 	char *input = NULL, *arg[256], *token, *def_path = "/usr/bin/";
 	size_t bufsiz = 0;
 	ssize_t charsRead = 0;
-	int status, flag = 0;
+	int status, flag = 0, i = 0;
 	pid_t pid;
 
 	while (true)
@@ -17,6 +17,7 @@ int main(int argc, char **argv)
 		printf("M&N$ ");
 		charsRead = getline(&input, &bufsiz, stdin);
 		tokenize(input, arg);
+
 		if (charsRead == -1 || strcmp(arg[0], "exit") == 0)
 			break;
 		if (strcmp(arg[0], "env") == 0)
@@ -26,8 +27,6 @@ int main(int argc, char **argv)
                 }
 		flag = findandexec(arg[0], def_path, arg, 0);
 		if (flag == 0)
-			continue;
-		else if (flag == 2)
 			continue;
 		else
 		{
