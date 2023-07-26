@@ -34,5 +34,6 @@ int main(void)
 	}
 
 	free(input);
+	free(newString);
 	return (0);
 }

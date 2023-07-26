@@ -11,6 +11,12 @@ char *comments(char *input)
 
 	 comString = malloc(_strlen(input) + 1);
 
+	 if (comString == NULL)
+	{
+		perror("malloc");
+		exit(1);
+	}
+
 	while (input[i] != '#')
 	{
 		comString[i] = input[i];

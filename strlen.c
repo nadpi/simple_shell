@@ -1,12 +1,14 @@
 #include "shell.h"
 /**
- * _strlen - returns the length of a string.
- *@s: points to the address of the variable s.
- * Return: the length of a string.
-*/
+ * _strlen - returns the length of a string
+ * @s: string
+ * Return: the length
+ */
 int _strlen(char *s)
 {
-	int string_length = strlen(s);
+	int i;
 
-	return (string_length);
+	while (s[i] != '\0')
+		i++;
+	return (i);
 }
