@@ -10,8 +10,7 @@ char *comments(char *input)
 	char *comString;
 
 	 comString = malloc(_strlen(input) + 1);
-
-	 if (comString == NULL)
+	if (comString == NULL)
 	{
 		perror("malloc");
 		exit(1);
