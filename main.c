@@ -14,6 +14,9 @@ int main(void)
 	{
 		printf("$ ");
 		charsRead = getline(&input, &bufsiz, stdin);
+
+		if (charsRead == -1)
+			break;
 		if (cmp("#", input) > 0)
 		{
 			newString = comments(input);
@@ -29,11 +32,8 @@ int main(void)
 		if (breakloop == true)
 			break;
 
-		if (charsRead == -1)
-			break;
 	}
 
 	free(input);
-	free(newString);
 	return (0);
 }
