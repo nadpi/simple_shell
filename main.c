@@ -9,7 +9,6 @@ int main(void)
 	size_t bufsiz = 0;
 	ssize_t charsRead = 0;
 	bool breakloop = false;
-
 	bool is_terminal = isatty(STDIN_FILENO);
 	bool command_executed = false;
 
