@@ -27,7 +27,7 @@ bool separator(char *input)
                 }
                 else if (pid == 0)
                 {
-                    findandexec(arg[0], "/usr/bin/", arg, 1);
+                    findandexec(arg[0], "/usr/bin/", arg, 0);
                     exit(1);
                 }
                 else
