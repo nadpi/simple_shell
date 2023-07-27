@@ -6,7 +6,7 @@
 */
 char *comments(char *input)
 {
-	int i = 0;
+	int i = 0, j = 0;
 	char *comString;
 
 	 comString = malloc(_strlen(input) + 1);
@@ -16,11 +16,14 @@ char *comments(char *input)
 		exit(1);
 	}
 
-	while (input[i] != '#')
+	while (input[i] != '\0')
 	{
-		comString[i] = input[i];
+		if (input[i] == '#' && (i == 0 || input[i - 1] == ' '))
+			break;
+		comString[j] = input[i];
+		j++;
 		i++;
 	}
-	comString[i++] = '\0';
+	comString[j++] = '\0';
 	return (comString);
 }
