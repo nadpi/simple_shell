@@ -11,6 +11,7 @@ int main(void)
 	bool breakloop = false;
 	bool is_terminal = isatty(STDIN_FILENO);
 	bool command_executed = false;
+	int status = 0;
 
 	while (true)
 	{
@@ -39,5 +40,5 @@ int main(void)
 	}
 
 	free(input);
-	return (0);
+	return (status);
 }
