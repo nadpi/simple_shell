@@ -8,6 +8,7 @@ int main(void)
 	char *input = NULL, *newString;
 	size_t bufsiz = 0;
 	ssize_t charsRead = 0;
+	bool breakloop = false;
 
 	bool is_terminal = isatty(STDIN_FILENO);
 	bool command_executed = false;
@@ -27,19 +28,14 @@ int main(void)
 			free(newString);
 		}
 
-/*		if (separator(input))
+		if (separator(input))
 		{
 			breakloop = true;
 			command_executed = true;
 		}
 
 		if (breakloop == true)
-			break;*/
-		    command_executed = separator(input);
-
-    if (strcmp(input, "exit\n") == 0)
-        exit(0);
-
+			break;
 	}
 
 	free(input);
