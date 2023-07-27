@@ -7,7 +7,7 @@
 bool separator(char *input)
 {
 	char *token, *sep_delimiter = ";", *command;
-	int i, token_count = 0, status = 0;
+	int i, token_count = 0;
 	char *commands[256], *arg[256];
 
 	token = strtok(input, sep_delimiter);
@@ -40,13 +40,10 @@ bool separator(char *input)
 			exit(1);
 		}
 		else if (pid == 0)
-		{
 			findandexec(arg[0], "/usr/bin/", arg, 1);
-			exit(2);
-		}
 		else
 			waitpid(pid, NULL, 0);
 		}
 	}
-	return (status);
+	return (false);
 }
