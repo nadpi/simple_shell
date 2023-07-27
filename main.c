@@ -10,8 +10,12 @@ int main(void)
 	ssize_t charsRead = 0;
 	bool breakloop = false;
 
+	bool is_terminal = isatty(STDIN_FILENO);
+	bool command_executed = false;
+
 	while (true)
 	{
+		if (is_terminal && !command_executed)
 		printf("$ ");
 		charsRead = getline(&input, &bufsiz, stdin);
 
@@ -27,6 +31,7 @@ int main(void)
 		if (separator(input))
 		{
 			breakloop = true;
+			command_executed = true;
 		}
 
 		if (breakloop == true)
