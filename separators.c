@@ -40,11 +40,7 @@ bool separator(char *input)
 			exit(1);
 		}
 		else if (pid == 0)
-		{
-			if ((findandexec(arg[0], "/usr/bin/", arg, 1)) == 2)
-					exit(2);
 			findandexec(arg[0], "/usr/bin/", arg, 1);
-		}
 		else
 			waitpid(pid, NULL, 0);
 		}
