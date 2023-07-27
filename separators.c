@@ -7,7 +7,7 @@
 bool separator(char *input)
 {
 	char *token, *sep_delimiter = ";", *command;
-	int i, token_count = 0;
+	int i, token_count = 0, status = 0;
 	char *commands[256], *arg[256];
 
 	token = strtok(input, sep_delimiter);
