@@ -24,6 +24,6 @@ char *comments(char *input)
 		j++;
 		i++;
 	}
-	comString[j] = '\0';
+	comString[j++] = '\0';
 	return (comString);
 }
