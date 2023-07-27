@@ -44,7 +44,7 @@ int findandexec(char *command, char *path, char **arg, int option)
 	else
 	{
 		fprintf(stderr, "%s: command not found\n", command);
-		flag = 0;
+		flag = 2;
 	}
 		free(cleanpath);
 	}

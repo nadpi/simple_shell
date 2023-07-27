@@ -31,6 +31,7 @@ int main(void)
 		{
 			breakloop = true;
 			command_executed = true;
+			break;
 		}
 
 		if (breakloop == true)
